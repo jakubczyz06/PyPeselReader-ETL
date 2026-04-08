@@ -1,4 +1,5 @@
 #PyPeselReader-ETL 🚀
+
 A professional Python-based **ETL (Extract, Transform, Load) pipeline** designed for batch processing, validation, and enrichment of Polish PESEL numbers. This project demonstrates industrial Data Engineering practices, clean Object-Oriented Programming (OOP), and robust error handling.
 
 
