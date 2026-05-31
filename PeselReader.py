@@ -75,7 +75,7 @@ class PeselReader:
     def __init__(self, pesel_str):
         #The PESEL number must consist of eleven digits
         if not (pesel_str.isdigit() and len(pesel_str) == 11):
-            raise ValueError("Podany numer PESEL jest nieprawidłowy.")
+            logging.info("Podany numer PESEL jest nieprawidłowy.")
 
         self.pesel_str = pesel_str
         self.checksum()
@@ -92,7 +92,7 @@ class PeselReader:
 
         checking = (10 - (pesel_sum % 10)) % 10
         if checking != int(self.pesel_str[10]):
-            raise ValueError("Błąd checksum.")
+            logging.info("Błąd checksum.")
 
 
 
@@ -149,7 +149,7 @@ class PeselReader:
 
 
 
-    def save_to_db(self, db_name="PeselInfo.db"):
+    def save_to_db(self, db_name = "PeselInfo.db"):
         """
             Connects to the SQLite database, ensures the table exists,
             and inserts the current PESEL record. Handles duplicate entries.
@@ -190,7 +190,7 @@ class PeselReader:
 
 
     @classmethod
-    def load_everything(cls, db_name="PeselInfo.db"):
+    def load_everything(cls, db_name = "PeselInfo.db"):
         """
                 L - Loading, fetches all stored PESEL numbers from the database and
                 returns a list of PeselReader objects. Invalid records are skipped.
